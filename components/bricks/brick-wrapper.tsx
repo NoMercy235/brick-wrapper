@@ -1,8 +1,8 @@
-import { getRotation } from "@/utils/utils";
 import { CornerBrick } from "./corner/corner-brick";
+import { CornerComplexBrick } from "./corner/corner-complex-brick";
 import { HorizontalEdgeBrick } from "./horizontal-edge/horizontal-edge-brick";
 import { VerticalEdgeBrick } from "./vertical-edge/vertical-edge-brick";
-import { CornerComplexBrick } from "./corner/corner-complex-brick";
+import { getRotation } from "@/utils/utils";
 
 // When adding a new brick type, this enum should be updated
 // Afterwards, the new brick type should be added to the switch statement in BrickWrapper
