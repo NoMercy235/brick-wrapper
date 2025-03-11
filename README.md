@@ -64,7 +64,7 @@ This is not the scope of the component, but handling the brick creation with SVG
 
 ##### 1.2 CSS approach (chosen solution)
 
-Nothing too fancy here. Just using `div` elements with borders of different configurations to simulate the "bumps" of the brick piece.
+Nothing too fancy here. Just using `div` elements with borders of different configurations to simulate the "bumps" of the brick piece. Instead of manually writing the CSS, I have used the Tailwind CSS framework to help with development speed.
 
 #### 2 Background creation and management
 
@@ -91,3 +91,10 @@ The numbers will be mapped to an enum so we know what type of brick to render. I
 This solution is similar to the one above, but instead of using a logical matrix, we would be using the CSS Grid system.
 
 I imagine this would be the better solution for the ideal case - where columns would be added dynamically based on the space available - but unless we find a formula for the dynamic configuration, this approach cannot easily be used with static configurations.
+
+### Possible improvements
+
+- Common `Brick` component - maybe it lessens the need for code duplication, but on the other side it also makes it harder to define custom bricks
+- UI inconsistencies caused by pixel calculations
+- Brick protrusion position can be made fixed
+- Update `BrickWrapper` so that it accepts a configuration similar to the one mentioned above, thus lowering code repetition for unneeded bricks (but depending on business needs, the current configuration might actually be necessary)
