@@ -33,3 +33,7 @@ export const getRotation = (
   // INTERIOR
   return "";
 };
+
+export const getRandomInt = (max: number) => {
+  return Math.floor(Math.random() * max);
+};

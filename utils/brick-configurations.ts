@@ -92,3 +92,16 @@ export const guitaristBrickConfig = [
   [BrickType.Flat, BrickType.Flat, BrickType.RightComplex],
   [BrickType.CornerBLSimple, BrickType.BottomSimple, BrickType.Flat],
 ];
+
+export const randomConfigForFirstElement = [
+  brickConfig,
+  loremIpsumBrickConfig,
+  guitaristBrickConfig,
+];
+
+export const randomColors = [
+  "bg-red-400",
+  "bg-blue-400",
+  "bg-purple-400",
+  "bg-orange-400",
+];

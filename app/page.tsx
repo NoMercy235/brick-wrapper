@@ -2,21 +2,57 @@
 
 import { BrickWrapper } from "@/components/bricks/brick-wrapper";
 import {
-  brickConfig,
   guitaristBrickConfig,
   loremIpsumBrickConfig,
+  randomColors,
+  randomConfigForFirstElement,
   smallBrickConfig,
 } from "@/utils/brick-configurations";
+import { getRandomInt } from "@/utils/utils";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Home() {
+  const [currentConfigIndex, setCurrentConfigIndex] = useState(0);
+  const [currentColorIndex, setCurrentColorIndex] = useState(0);
+
+  const currentConfig = randomConfigForFirstElement[currentConfigIndex];
+  const currentColor = randomColors[currentColorIndex];
+
+  const onConfigChange = () => {
+    let newConfigIndex, newColorIndex;
+    do {
+      newConfigIndex = getRandomInt(randomConfigForFirstElement.length);
+    } while (newConfigIndex == currentConfigIndex);
+    do {
+      newColorIndex = getRandomInt(randomColors.length);
+    } while (newColorIndex == currentColorIndex);
+
+    setCurrentConfigIndex(newConfigIndex);
+    setCurrentColorIndex(newColorIndex);
+  };
+
   return (
     <div className="flex p-4 flex-col w-3/4 mx-auto">
-      <h2 className="mb-4 border-b mb-8 text-3xl leading-tight">
+      <h2 className="mb-4 border-b mb-3 text-3xl leading-tight">
         Solution - Div matrix
       </h2>
 
-      <BrickWrapper configuration={brickConfig} color="bg-purple-400">
+      <div className="mb-10 flex">
+        <button
+          type="button"
+          className="text-white mr-4 bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-lg px-5 py-2.5"
+          onClick={onConfigChange}
+        >
+          Change
+        </button>
+        <div className="flex flex-col">
+          <p>Current Config index: {currentConfigIndex}</p>
+          <p>Current Color: {currentColor}</p>
+        </div>
+      </div>
+
+      <BrickWrapper configuration={currentConfig} color={currentColor}>
         <div>
           <p>
             This solution uses a logical matrix where each cell is a div
@@ -107,7 +143,6 @@ export default function Home() {
           src="https://images.unsplash.com/photo-1464375117522-1311d6a5b81f?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2250&q=80"
           width={2250}
           height={1390}
-          layout="responsive"
         />
       </BrickWrapper>
     </div>
