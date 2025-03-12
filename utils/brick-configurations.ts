@@ -101,7 +101,9 @@ export const randomConfigForFirstElement = [
 
 export const randomColors = [
   "bg-red-400",
-  "bg-blue-400",
+  "bg-gray-400",
   "bg-purple-400",
+  "bg-cyan-400",
+  "bg-green-400",
   "bg-orange-400",
 ];

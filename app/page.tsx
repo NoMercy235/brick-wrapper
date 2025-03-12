@@ -128,7 +128,7 @@ export default function Home() {
 
       <div className="h-10"></div>
 
-      <div className="w-[250] mt-5">
+      <div className="w-[250px] mt-5">
         <BrickWrapper configuration={smallBrickConfig} color="bg-orange-400">
           <p>It also supports small content</p>
         </BrickWrapper>
