@@ -54,13 +54,14 @@ export default function Home() {
                 <li>Verbose configuration</li>
                 <li>Brick protrusion placement is not fixed (when resizing)</li>
                 <li>
-                  Current implementation has some UI inconsistencies due to
-                  pixel calculation (notice white lines that sometimes appear
-                  between bricks)
-                </li>
-                <li>
                   Potential performance issues when rendering a large number of
                   bricks
+                </li>
+                <li>
+                  <b>
+                    Subpixel rendering and rounding errors due to the use of
+                    `transform`!!!
+                  </b>
                 </li>
               </ul>
             </li>
