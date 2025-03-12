@@ -2,11 +2,12 @@ import { BrickType } from "@/components/bricks/brick-wrapper";
 
 export const brickConfig = [
   [
-    BrickType.CornerTLComplex,
-    BrickType.HorizontalEdge,
-    BrickType.Flat,
-    BrickType.Flat,
-    BrickType.CornerTRSimple,
+    BrickType.TopMultiple,
+    BrickType.TopMultiple,
+    BrickType.TopMultiple,
+    BrickType.TopMultiple,
+    BrickType.TopMultiple,
+    BrickType.CornerTRComplex,
   ],
   [
     BrickType.LeftSimple,
@@ -20,21 +21,21 @@ export const brickConfig = [
     BrickType.Flat,
     BrickType.Flat,
     BrickType.Flat,
-    BrickType.RightSimple,
+    BrickType.RightComplex,
   ],
   [
     BrickType.Flat,
     BrickType.Flat,
     BrickType.Flat,
     BrickType.Flat,
-    BrickType.RightSimple,
+    BrickType.Flat,
   ],
   [
     BrickType.LeftSimple,
     BrickType.Flat,
     BrickType.Flat,
     BrickType.Flat,
-    BrickType.Flat,
+    BrickType.RightSimple,
   ],
   [
     BrickType.LeftSimple,
@@ -48,7 +49,7 @@ export const brickConfig = [
     BrickType.BottomSimple,
     BrickType.Flat,
     BrickType.BottomSimple,
-    BrickType.CornerBRSimple,
+    BrickType.CornerBRComplex,
   ],
 ];
 
@@ -57,7 +58,7 @@ export const loremIpsumBrickConfig = [
     BrickType.Flat,
     BrickType.HorizontalEdge,
     BrickType.HorizontalEdge,
-    BrickType.Corner,
+    BrickType.CornerTRSimple,
   ],
   [
     BrickType.VerticalEdge,
@@ -76,12 +77,18 @@ export const loremIpsumBrickConfig = [
     BrickType.Corner,
     BrickType.HorizontalEdge,
     BrickType.HorizontalEdge,
-    BrickType.CornerComplex,
+    BrickType.CornerBRComplex,
   ],
 ];
 
+export const smallBrickConfig = [
+  [BrickType.TopMultiple, BrickType.TopMultiple],
+  [BrickType.Flat, BrickType.RightComplex],
+  [BrickType.CornerBLSimple, BrickType.Flat],
+];
+
 export const guitaristBrickConfig = [
-  [BrickType.Flat, BrickType.Flat, BrickType.Corner],
-  [BrickType.VerticalEdge, BrickType.Flat, BrickType.VerticalEdge],
-  [BrickType.Corner, BrickType.Flat, BrickType.CornerComplex],
+  [BrickType.Flat, BrickType.TopMultiple, BrickType.Flat],
+  [BrickType.Flat, BrickType.Flat, BrickType.RightComplex],
+  [BrickType.CornerBLSimple, BrickType.BottomSimple, BrickType.Flat],
 ];

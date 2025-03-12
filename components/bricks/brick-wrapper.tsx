@@ -4,12 +4,16 @@ import { HorizontalEdgeBrick } from "./_deprecated/horizontal-edge/horizontal-ed
 import { VerticalEdgeBrick } from "./_deprecated/vertical-edge/vertical-edge-brick";
 import { BottomEdgeSingleBrick } from "./bottom-edge/bottom-edge-single-brick";
 import { BottomLeftCornerBrick } from "./bottom-left-corner/bottom-left-corner-simple";
+import { BottomRightCornerComplexBrick } from "./bottom-right-corner/bottom-right-corner-complex";
 import { BottomRightCornerBrick } from "./bottom-right-corner/bottom-right-corner-simple";
 import { LeftEdgeSingleBrick } from "./left-edge/left-edge-single-brick";
+import { RightEdgeComplexBrick } from "./right-edge/right-edge-complex-brick";
 import { RightEdgeSingleBrick } from "./right-edge/right-edge-single-brick";
+import { TopEdgeMultipleBrick } from "./top-edge/top-edge-multiple-brick";
 import { TopEdgeSingleBrick } from "./top-edge/top-edge-single-brick";
 import { TopLeftCornerComplexBrick } from "./top-left-corner/top-left-corner-complex";
 import { TopLeftCornerBrick } from "./top-left-corner/top-left-corner-simple";
+import { TopRightCornerComplexBrick } from "./top-right-corner/top-right-corner-complex";
 import { TopRightCornerBrick } from "./top-right-corner/top-right-corner-simple";
 import { getRotation } from "@/utils/utils";
 
@@ -17,14 +21,18 @@ import { getRotation } from "@/utils/utils";
 // Afterwards, the new brick type should be added to the switch statement in BrickWrapper
 export enum BrickType {
   TopSimple,
+  TopMultiple,
   RightSimple,
+  RightComplex,
   BottomSimple,
   LeftSimple,
   CornerTLSimple,
   CornerTLComplex,
   CornerTRSimple,
+  CornerTRComplex,
   CornerBLSimple,
   CornerBRSimple,
+  CornerBRComplex,
   HorizontalEdge,
   VerticalEdge,
   Corner,
@@ -80,37 +88,31 @@ const renderBrick = (
         <TopLeftCornerBrick key={colIndex} rotate={rotation} color={color} />
       );
     case BrickType.CornerTLComplex:
-      return (
-        <TopLeftCornerComplexBrick
-          key={colIndex}
-          rotate={rotation}
-          color={color}
-        />
-      );
+      return <TopLeftCornerComplexBrick key={colIndex} color={color} />;
     case BrickType.CornerTRSimple:
       return (
         <TopRightCornerBrick key={colIndex} rotate={rotation} color={color} />
       );
+    case BrickType.CornerTRComplex:
+      return <TopRightCornerComplexBrick key={colIndex} color={color} />;
     case BrickType.CornerBLSimple:
-      return (
-        <BottomLeftCornerBrick key={colIndex} rotate={rotation} color={color} />
-      );
+      return <BottomLeftCornerBrick key={colIndex} color={color} />;
     case BrickType.CornerBRSimple:
-      return (
-        <BottomRightCornerBrick
-          key={colIndex}
-          rotate={rotation}
-          color={color}
-        />
-      );
+      return <BottomRightCornerBrick key={colIndex} color={color} />;
+    case BrickType.CornerBRComplex:
+      return <BottomRightCornerComplexBrick key={colIndex} color={color} />;
     case BrickType.TopSimple:
       return (
         <TopEdgeSingleBrick key={colIndex} rotate={rotation} color={color} />
       );
-    case BrickType.RightSimple:
+    case BrickType.TopMultiple:
       return (
-        <RightEdgeSingleBrick key={colIndex} rotate={rotation} color={color} />
+        <TopEdgeMultipleBrick key={colIndex} rotate={rotation} color={color} />
       );
+    case BrickType.RightSimple:
+      return <RightEdgeSingleBrick key={colIndex} color={color} />;
+    case BrickType.RightComplex:
+      return <RightEdgeComplexBrick key={colIndex} color={color} />;
     case BrickType.BottomSimple:
       return (
         <BottomEdgeSingleBrick key={colIndex} rotate={rotation} color={color} />

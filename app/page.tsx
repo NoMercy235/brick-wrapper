@@ -5,13 +5,14 @@ import {
   brickConfig,
   guitaristBrickConfig,
   loremIpsumBrickConfig,
+  smallBrickConfig,
 } from "@/utils/brick-configurations";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <div className="flex p-4 flex-col w-3/4 mx-auto">
-      <h2 className="mb-4 border-b pb-4 text-3xl leading-tight">
+      <h2 className="mb-4 border-b mb-8 text-3xl leading-tight">
         Solution - Div matrix
       </h2>
 
@@ -28,6 +29,7 @@ export default function Home() {
               <ul className="max-w-md space-y-1 list-disc list-inside">
                 <li>Documentation and play testing ~1.5 hours</li>
                 <li>Implementation ~3 hours</li>
+                <li>Add multiple brick shapes ~1.5 hours</li>
               </ul>
             </li>
             <li>
@@ -69,7 +71,7 @@ export default function Home() {
         <p>
           <b>
             Important issue! Subpixel rendering and rounding errors due to the
-            use of `transform`!
+            use of `transform` or `clip-path`!
           </b>
         </p>
 
@@ -90,23 +92,16 @@ export default function Home() {
 
       <div className="h-10"></div>
 
-      <p>It also supports small content</p>
-      <div className="w-min mt-1">
-        <BrickWrapper
-          configuration={guitaristBrickConfig}
-          color="bg-orange-400"
-        >
-          Small
+      <div className="w-[250] mt-5">
+        <BrickWrapper configuration={smallBrickConfig} color="bg-orange-400">
+          <p>It also supports small content</p>
         </BrickWrapper>
       </div>
 
       <div className="h-10"></div>
 
       <BrickWrapper configuration={guitaristBrickConfig} color="bg-red-400">
-        <p>
-          Here is a random photo. Notice the flat corner in the upper left part
-          of the photo
-        </p>
+        <p>Here is a random photo of the photo</p>
         <Image
           alt="The guitarist in the concert."
           src="https://images.unsplash.com/photo-1464375117522-1311d6a5b81f?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2250&q=80"
