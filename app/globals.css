@@ -8,6 +8,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Those are no longer needed - only used for prod fix, when demonstrating the subpixel rendering issue */
 .transform.-scale-100 {
   transform: scale(-1);
 }

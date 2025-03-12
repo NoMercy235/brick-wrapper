@@ -1,12 +1,30 @@
-import { CornerBrick } from "./corner/corner-brick";
-import { CornerComplexBrick } from "./corner/corner-complex-brick";
-import { HorizontalEdgeBrick } from "./horizontal-edge/horizontal-edge-brick";
-import { VerticalEdgeBrick } from "./vertical-edge/vertical-edge-brick";
+import { CornerBrick } from "./_deprecated/corner/corner-brick";
+import { CornerComplexBrick } from "./_deprecated/corner/corner-complex-brick";
+import { HorizontalEdgeBrick } from "./_deprecated/horizontal-edge/horizontal-edge-brick";
+import { VerticalEdgeBrick } from "./_deprecated/vertical-edge/vertical-edge-brick";
+import { BottomEdgeSingleBrick } from "./bottom-edge/bottom-edge-single-brick";
+import { BottomLeftCornerBrick } from "./bottom-left-corner/bottom-left-corner-simple";
+import { BottomRightCornerBrick } from "./bottom-right-corner/bottom-right-corner-simple";
+import { LeftEdgeSingleBrick } from "./left-edge/left-edge-single-brick";
+import { RightEdgeSingleBrick } from "./right-edge/right-edge-single-brick";
+import { TopEdgeSingleBrick } from "./top-edge/top-edge-single-brick";
+import { TopLeftCornerComplexBrick } from "./top-left-corner/top-left-corner-complex";
+import { TopLeftCornerBrick } from "./top-left-corner/top-left-corner-simple";
+import { TopRightCornerBrick } from "./top-right-corner/top-right-corner-simple";
 import { getRotation } from "@/utils/utils";
 
 // When adding a new brick type, this enum should be updated
 // Afterwards, the new brick type should be added to the switch statement in BrickWrapper
 export enum BrickType {
+  TopSimple,
+  RightSimple,
+  BottomSimple,
+  LeftSimple,
+  CornerTLSimple,
+  CornerTLComplex,
+  CornerTRSimple,
+  CornerBLSimple,
+  CornerBRSimple,
   HorizontalEdge,
   VerticalEdge,
   Corner,
@@ -32,7 +50,16 @@ const renderBrick = (
   columns: number,
   color: string
 ) => {
-  const rotation = getRotation(rowIndex, colIndex, rows, columns);
+  // This code was left to demonstrate the subpixel rendering issue
+  let rotation = "";
+  if (
+    [BrickType.Corner, BrickType.HorizontalEdge, BrickType.VerticalEdge].find(
+      (el) => el == brickType
+    )
+  ) {
+    rotation = getRotation(rowIndex, colIndex, rows, columns);
+  }
+
   switch (brickType) {
     case BrickType.Corner:
       return <CornerBrick key={colIndex} rotate={rotation} color={color} />;
@@ -47,6 +74,50 @@ const renderBrick = (
     case BrickType.VerticalEdge:
       return (
         <VerticalEdgeBrick key={colIndex} rotate={rotation} color={color} />
+      );
+    case BrickType.CornerTLSimple:
+      return (
+        <TopLeftCornerBrick key={colIndex} rotate={rotation} color={color} />
+      );
+    case BrickType.CornerTLComplex:
+      return (
+        <TopLeftCornerComplexBrick
+          key={colIndex}
+          rotate={rotation}
+          color={color}
+        />
+      );
+    case BrickType.CornerTRSimple:
+      return (
+        <TopRightCornerBrick key={colIndex} rotate={rotation} color={color} />
+      );
+    case BrickType.CornerBLSimple:
+      return (
+        <BottomLeftCornerBrick key={colIndex} rotate={rotation} color={color} />
+      );
+    case BrickType.CornerBRSimple:
+      return (
+        <BottomRightCornerBrick
+          key={colIndex}
+          rotate={rotation}
+          color={color}
+        />
+      );
+    case BrickType.TopSimple:
+      return (
+        <TopEdgeSingleBrick key={colIndex} rotate={rotation} color={color} />
+      );
+    case BrickType.RightSimple:
+      return (
+        <RightEdgeSingleBrick key={colIndex} rotate={rotation} color={color} />
+      );
+    case BrickType.BottomSimple:
+      return (
+        <BottomEdgeSingleBrick key={colIndex} rotate={rotation} color={color} />
+      );
+    case BrickType.LeftSimple:
+      return (
+        <LeftEdgeSingleBrick key={colIndex} rotate={rotation} color={color} />
       );
     case BrickType.Flat:
       return <div key={colIndex} className={`flex-1 ${color}`}></div>;

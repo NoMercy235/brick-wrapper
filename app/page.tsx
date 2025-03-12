@@ -57,12 +57,6 @@ export default function Home() {
                   Potential performance issues when rendering a large number of
                   bricks
                 </li>
-                <li>
-                  <b>
-                    Subpixel rendering and rounding errors due to the use of
-                    `transform`!!!
-                  </b>
-                </li>
               </ul>
             </li>
           </ul>
@@ -72,10 +66,26 @@ export default function Home() {
       <div className="h-10"></div>
 
       <BrickWrapper configuration={loremIpsumBrickConfig} color="bg-blue-400">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis ex
-        id tellus rutrum maximus. Quisque ut viverra nulla, eget ultrices mi.
-        Cras eget dolor ut leo mattis scelerisque vitae et quam. Mauris faucibus
-        metus vel elit pharetra, et gravida mauris congue.
+        <p>
+          <b>
+            Important issue! Subpixel rendering and rounding errors due to the
+            use of `transform`!
+          </b>
+        </p>
+
+        <p>
+          This was fixed (in the element above) by manually defining bricks for
+          each position, instead of using transform
+        </p>
+
+        <br />
+
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis ex
+          id tellus rutrum maximus. Quisque ut viverra nulla, eget ultrices mi.
+          Cras eget dolor ut leo mattis scelerisque vitae et quam. Mauris
+          faucibus metus vel elit pharetra, et gravida mauris congue.
+        </p>
       </BrickWrapper>
 
       <div className="h-10"></div>
