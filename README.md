@@ -75,6 +75,7 @@ Split the background into a logical matrix behind the scenes. Each cell will be 
 Bricks can be of two types: `Edge`, or `Corner`. `Edge` can be used on both edge and corner positions, while `Corner` can be used only on the corner position.
 
 The consumer will provide a configuration as follows:
+(initial idea)
 
 ```
 {
@@ -84,17 +85,34 @@ The consumer will provide a configuration as follows:
 }
 ```
 
+(actual implementation)
+
+```
+[
+  [1, 0, 0, 2, 5],
+  [3, 0, 0, 0, 4],
+  [0, 0, 0, 0, 4],
+  [3, 0, 0, 0, 0],
+  [6, 0, 8, 8, 0],
+]
+```
+
 The numbers will be mapped to an enum so we know what type of brick to render. If a configuration property is missing (such as `rightEdge` in the case above), it will be considered as a solid color.
 
 ##### 2.2 CSS Grid
 
 This solution is similar to the one above, but instead of using a logical matrix, we would be using the CSS Grid system.
 
-I imagine this would be the better solution for the ideal case - where columns would be added dynamically based on the space available - but unless we find a formula for the dynamic configuration, this approach cannot easily be used with static configurations.
+<s>I imagine this would be the better solution for the ideal case - where columns would be added dynamically based on the space available - but unless we find a formula for the dynamic configuration, this approach cannot easily be used with static configurations.</s>
+
+Initial assumption was not correct. I think the CSS Grid could've been used with the current implementation as well.
 
 ### Possible improvements
 
 - Common `Brick` component - maybe it lessens the need for code duplication, but on the other side it also makes it harder to define custom bricks
 - UI inconsistencies caused by pixel calculations
-- Brick protrusion position can be made fixed
-- Update `BrickWrapper` so that it accepts a configuration similar to the one mentioned above, thus lowering code repetition for unneeded bricks (but depending on business needs, the current configuration might actually be necessary)
+  - fixed by manually defining brick shapes
+  - other potential fixes: use margin: -1px in the direction where the piece joins with another piece to "hide" the white line
+- Brick protrusion position can be made fixed - this would need clearer specs (dimensions for sm, md, lg)
+- Update `BrickWrapper` so that it accepts a configuration similar to the first one mentioned above, thus lowering code repetition for unneeded bricks (but depending on business needs, the current configuration might actually be necessary)
+- Color per brick instead of color per entire component
